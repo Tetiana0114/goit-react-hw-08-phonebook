@@ -1,38 +1,50 @@
-import Section from 'components/Section';
-import ContactForm from 'components/ContactForm';
-import ContactList from 'components/ContactList';
-import SearchField from 'components/SearchField';
-import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
-import { selectError, selectIsLoading } from 'redux/contacts/selectors';
-import { fetchContacts } from 'redux/contacts/operations';
+import { useEffect, lazy } from 'react';
+import { useDispatch } from 'react-redux';
+import { Route, Routes } from 'react-router-dom';
+import { Layout } from './Layout';
+import { PrivateRoute } from './PrivateRoute';
+import { RestrictedRoute } from './RestrictedRoute';
+import { refreshUser } from 'redux/auth/operations';
+import { useAuth } from 'hooks';
+
+const Home = lazy(() => import('../pages/Home'));
+const Register = lazy(() => import('../pages/Register'));
+const Login = lazy(() => import('../pages/Login'));
+const Contacts = lazy(() => import('../pages/Contacts'));
 
 export const App = () => {
   const dispatch = useDispatch();
-  const isLoading = useSelector(selectIsLoading);
-  const error = useSelector(selectError);
+  const { isRefreshing } = useAuth();
 
-    useEffect(() => {
-    dispatch(fetchContacts());
-    }, [dispatch]);
-  
-return (
-  <div
-    style={{
-      display: 'flex',
-      flexDirection: 'column',
-      alignItems: 'flex-start',
-      color: '#010101'
-    }}
-  >
-<Section title="Phonebook:">
-<ContactForm />
-</Section>
-<Section title="Contacts:">
-<SearchField />
-{isLoading && !error && <b>Request in progress...</b>}
-<ContactList />
-</Section>
-  </div>
-);
-}
+  useEffect(() => {
+    dispatch(refreshUser());
+  }, [dispatch]);
+
+  return isRefreshing ? (
+    <b>Refreshing user...</b>
+  ) : (
+    <Routes>
+      <Route path="/" element={<Layout />}>
+        <Route index element={<Home />} />
+        <Route
+          path="/register"
+          element={
+            <RestrictedRoute redirectTo="/contacts" component={<Register />} />
+          }
+        />
+        <Route
+          path="/login"
+          element={
+            <RestrictedRoute redirectTo="/contacts" component={<Login />} />
+          }
+        />
+        <Route
+          path="/contacts"
+          element={
+            <PrivateRoute redirectTo="/login" component={<Contacts />} />
+          }
+        />
+      </Route>
+    </Routes>
+  );
+};
