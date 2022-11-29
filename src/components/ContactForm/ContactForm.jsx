@@ -3,8 +3,8 @@ import { BsPhoneFill } from "react-icons/bs";
 import { FaUserPlus } from "react-icons/fa";
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import css from './ContactForm.module.css'
-import { addContact } from 'redux/operations';
-import { selectContacts } from 'redux/selectors';
+import { addContact } from 'redux/contacts/operations';
+import { selectContacts } from 'redux/contacts/selectors';
 
 const ContactForm = () => {
   const contacts = useSelector(selectContacts);

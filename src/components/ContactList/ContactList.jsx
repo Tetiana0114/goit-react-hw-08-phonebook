@@ -1,8 +1,8 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { FiUser } from "react-icons/fi";
-import { deleteContact } from 'redux/operations';
+import { deleteContact } from 'redux/contacts/operations';
 import css from './ContactList.module.css'
-import { selectVisibleContacts } from 'redux/selectors';
+import { selectVisibleContacts } from 'redux/contacts/selectors';
 
 const ContactList = () => {
     const dispatch = useDispatch();

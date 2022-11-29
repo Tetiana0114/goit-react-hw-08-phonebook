@@ -4,8 +4,8 @@ import ContactList from 'components/ContactList';
 import SearchField from 'components/SearchField';
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import { selectError, selectIsLoading } from 'redux/selectors';
-import { fetchContacts } from 'redux/operations';
+import { selectError, selectIsLoading } from 'redux/contacts/selectors';
+import { fetchContacts } from 'redux/contacts/operations';
 
 export const App = () => {
   const dispatch = useDispatch();
