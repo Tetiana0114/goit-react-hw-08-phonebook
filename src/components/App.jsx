@@ -7,10 +7,10 @@ import { RestrictedRoute } from './RestrictedRoute';
 import { refreshUser } from 'redux/auth/operations';
 import { useAuth } from 'hooks';
 
-const Home = lazy(() => import('../pages/Home'));
-const Register = lazy(() => import('../pages/Register'));
-const Login = lazy(() => import('../pages/Login'));
-const Contacts = lazy(() => import('../pages/Contacts'));
+const Home = lazy(() => import('../pages/HomePage/Home'));
+const Register = lazy(() => import('../pages/RegisterPage/Register'));
+const Login = lazy(() => import('../pages/LoginPage/Login'));
+const Contacts = lazy(() => import('../pages/ContactsPage/Contacts'));
 
 export const App = () => {
   const dispatch = useDispatch();

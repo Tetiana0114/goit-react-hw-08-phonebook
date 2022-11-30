@@ -1,7 +1,7 @@
 import { useDispatch } from 'react-redux';
 import css from './SearchField.module.css'
 import { FaSearch } from "react-icons/fa";
-import { setContactsFilter } from '../../redux/contacts/filterSlice';
+import { setContactsFilter } from '../../../redux/contacts/filterSlice';
 
 const SearchField = () => {
     const dispatch = useDispatch();
