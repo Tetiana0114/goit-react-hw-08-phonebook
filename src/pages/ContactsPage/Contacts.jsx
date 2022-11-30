@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { Helmet } from 'react-helmet';
 import Section from 'components/PhoneBook/Section';
 import ContactForm from 'components/PhoneBook/ContactForm';
 import ContactList from 'components/PhoneBook/ContactList';
@@ -26,10 +27,14 @@ const Contacts = () => {
         color: '#010101'
       }}
     >
-      <Section title="Phonebook:">
+      <Helmet>
+        <title>Contacts</title>
+      </Helmet>
+      <Section title="Add contacts:">
         <ContactForm />
       </Section>
-      <Section title="Contacts:">
+
+      <Section title="Your contacts:">
         <SearchField />
         {isLoading && !error && <b>Request in progress...</b>}
         <ContactList />

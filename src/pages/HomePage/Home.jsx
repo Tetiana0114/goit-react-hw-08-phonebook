@@ -1,21 +1,13 @@
-const styles = {
-  container: {
-    minHeight: 'calc(100vh - 50px)',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  title: {
-    fontWeight: 500,
-    fontSize: 48,
-    textAlign: 'center',
-  },
-};
+import { Helmet } from 'react-helmet';
+import css from './Home.module.css';
 
 const Home = () => {
   return (
-    <div style={styles.container}>
-      <h1 style={styles.title}>
+    <div className={css.container}>
+       <Helmet>
+        <title>PhoneBook</title>
+      </Helmet>
+      <h1 className={css.title}>
         Welcome to PhoneBook!
       </h1>
     </div>
