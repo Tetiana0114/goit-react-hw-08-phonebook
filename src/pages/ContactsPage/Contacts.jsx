@@ -8,7 +8,6 @@ import SearchField from 'components/PhoneBook/SearchField';
 import { fetchContacts } from 'redux/contacts/operations';
 import { selectError, selectIsLoading } from 'redux/contacts/selectors';
 
-
 const Contacts = () => {
   const dispatch = useDispatch();
   const isLoading = useSelector(selectIsLoading);
@@ -30,7 +29,7 @@ const Contacts = () => {
       <Helmet>
         <title>Contacts</title>
       </Helmet>
-      <Section title="Add contacts:">
+      <Section  title="Add contacts:">
         <ContactForm />
       </Section>
 

@@ -8,8 +8,12 @@ const Home = () => {
         <title>PhoneBook</title>
       </Helmet>
       <h1 className={css.title}>
-        Welcome to PhoneBook!
+      "PhoneBook"
       </h1>
+      <p className={css.text}>Welcome to the application for storing personal contacts!
+        To get started, select the registration menu item.
+        If you already have an account, go to the login page.
+      </p>
     </div>
   );
 };

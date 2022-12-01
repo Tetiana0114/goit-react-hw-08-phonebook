@@ -5,6 +5,7 @@ import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import css from './ContactForm.module.css'
 import { addContact } from 'redux/contacts/operations';
 import { selectContacts } from 'redux/contacts/selectors';
+import Button from '@mui/material/Button';
 
 const ContactForm = () => {
   const contacts = useSelector(selectContacts);
@@ -30,8 +31,8 @@ const ContactForm = () => {
   };
 
 return ( 
-<form onSubmit={onFormSubmit}>
-        <label className={css.label}>Name:
+<form onSubmit={onFormSubmit} className={css.form}>
+        <label className={css.label}>Name<FaUserPlus size={20} className={css.icon}/>:
          <input className={css.input}
       type="text"
       name="name"
@@ -50,8 +51,8 @@ return (
       title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
       required
     /> 
-        </label>
-    <button type="submit" className={css.btn}><FaUserPlus size={20} className={css.btn_icon}/>Add contact</button>
+    </label>
+    <Button type="submit" variant="contained">Add contact</Button>
     </form>
     );
 }
