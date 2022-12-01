@@ -1,5 +1,4 @@
 import { NavLink } from 'react-router-dom';
-// import { RiHomeHeartLine } from "react-icons/ri";
 import { useAuth } from 'hooks';
 import css from './Navigation.module.css';
 
@@ -8,12 +7,15 @@ const Navigation = () => {
 
   return (
     <nav>
-        <NavLink className={css.link} to="/" end>
-        {/* <RiHomeHeartLine size={32} className={css.icon} /> */}
+      <NavLink to="/" end
+        className={({ isActive }) => (isActive ? css.active : css.link)}
+      >
         Home
       </NavLink>
       {isLoggedIn && (
-        <NavLink className={css.link} to="/contacts">
+        <NavLink to="/contacts"
+        className={({ isActive }) => (isActive ? css.active : css.link)}
+        >
           Contacts
         </NavLink>
       )}
